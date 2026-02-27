@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="auth-page">
+
+    <div class="auth-wrapper">
+
+        <!-- LEFT BRAND SECTION -->
+        <div class="auth-brand">
+            <h1>Patient Care Portal</h1>
+            <p>
+                Secure access to your medical records, prescriptions,
+                and doctor consultations — all in one place.
+            </p>
+        </div>
+
+        <!-- RIGHT LOGIN CARD -->
+        <div class="auth-card">
+            <h2>Patient Login</h2>
+
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="flash">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            <form method="POST">
+                <label>Username</label>
+                <input type="text" name="username" required>
+
+                <label>Password</label>
+                <input type="password" name="password" required>
+
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+
+            <p class="auth-footer">
+                New patient?
+                <a href="{{ url_for('register_patient') }}">Create an account</a>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

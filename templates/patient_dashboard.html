@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Patient Dashboard</h2>
+
+<h3>Your Prescriptions</h3>
+
+<table border="1" cellpadding="10">
+<tr>
+    <th>Medicine</th>
+    <th>Dosage</th>
+    <th>Notes</th>
+</tr>
+
+{% for pres in prescriptions %}
+<tr>
+    <td>{{ pres.medicine }}</td>
+    <td>{{ pres.dosage }}</td>
+    <td>{{ pres.notes }}</td>
+</tr>
+{% else %}
+<tr>
+    <td colspan="3">No prescriptions found</td>
+</tr>
+{% endfor %}
+</table>
+
+<hr>
+
+<h3>Chat With Doctors</h3>
+
+{% for doctor in doctors %}
+    <a href="{{ url_for('chat', doctor_id=doctor.id) }}">
+        <button>Chat with Dr. {{ doctor.name }}</button>
+    </a>
+    <br><br>
+{% endfor %}
+
+{% endblock %}
+
+

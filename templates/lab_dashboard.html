@@ -1,0 +1,12 @@
+<h2>Lab</h2>
+
+{% for t in tests %}
+<p>{{t.patient}} - {{t.test}}</p>
+
+<form method="POST">
+<input type="hidden" name="id" value="{{t.id}}">
+<input name="result" placeholder="Result">
+<button>Submit</button>
+</form>
+<hr>
+{% endfor %}

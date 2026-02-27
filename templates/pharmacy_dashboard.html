@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Pharmacy Dashboard</h2>
+<p>All prescriptions:</p>
+
+<table border="1" cellpadding="10">
+<tr>
+    <th>Patient</th>
+    <th>Doctor</th>
+    <th>Medicine</th>
+    <th>Dosage</th>
+    <th>Notes</th>
+</tr>
+
+{% for pres in prescriptions %}
+<tr>
+    <td>{{ pres.patient.username }}</td>
+    <td>{{ pres.doctor.name }}</td>
+    <td>{{ pres.medicine }}</td>
+    <td>{{ pres.dosage }}</td>
+    <td>{{ pres.notes }}</td>
+</tr>
+{% else %}
+<tr>
+    <td colspan="5">No prescriptions found</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}
+
+

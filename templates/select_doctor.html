@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="main">
+    <header class="page-header">
+        <h2>Available Doctors</h2>
+        <p>Select a specialist to view details or book an appointment.</p>
+    </header>
+
+    <div class="grid">
+        {% for doctor in doctors %}
+        <div class="card">
+            <h3>Dr. {{ doctor.name }}</h3>
+            <p class="description">Hospital ID: #DOC00{{ doctor.id }}</p>
+            
+            <div class="date" style="margin-top: 10px;">
+                <strong>Availability:</strong> Mon - Fri (9 AM - 5 PM)
+            </div>
+
+            <div class="card-actions">
+                <a href="#" class="btn btn-download">Book Now</a>
+                <a href="{{ url_for('patient_dashboard') }}" class="btn btn-view">Back</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="card">
+            <h3>No Doctors Found</h3>
+            <p class="description">There are no doctors registered in the system yet.</p>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Doctors Available For {{ current_user.disease }}</h2>
+
+{% if doctors %}
+
+<table border="1" cellpadding="10">
+<tr>
+    <th>Name</th>
+    <th>Specialization</th>
+</tr>
+
+{% for doctor in doctors %}
+<tr>
+    <td>{{ doctor.name }}</td>
+    <td>{{ doctor.specialization }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% else %}
+<p>No doctors found.</p>
+{% endif %}
+
+{% endblock %}
+

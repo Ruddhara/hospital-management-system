@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Doctor Dashboard</h2>
+
+<table border="1" cellpadding="10">
+<tr>
+    <th>Patient</th>
+    <th>Disease</th>
+    <th>Medicine</th>
+    <th>Dosage</th>
+    <th>Notes</th>
+    <th>Action</th>
+</tr>
+
+{% for patient in patients %}
+<tr>
+    <a href="{{ url_for('chat', username=patient.username) }}">
+    <button>Chat</button>
+    </a>
+
+<form method="POST"
+      action="{{ url_for('add_prescription', patient_id=patient.id) }}">
+    <td>{{ patient.username }}</td>
+    <td>{{ patient.disease }}</td>
+    <td><input name="medicine" required></td>
+    <td><input name="dosage" required></td>
+    <td><input name="notes"></td>
+    <td><button type="submit">Add</button></td>
+</form>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}
+
+
+
+

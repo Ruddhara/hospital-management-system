@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+
+<main class="main">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+        <h2>Welcome to Hospital Management System</h2>
+        <p class="hero-subtitle">
+            A unified, secure, and scalable platform for modern healthcare.
+        </p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Admin</h3>
+                <p class="description">
+                    Manage hospital staff, doctors, patients, and system settings.
+                </p>
+                <a href="{{ url_for('login_admin') }}" class="btn">Admin Login</a>
+            </div>
+
+            <div class="card">
+                <h3>Doctor</h3>
+                <p class="description">
+                    Access patient records, prescriptions, and schedules.
+                </p>
+                <a href="{{ url_for('login_doctor') }}" class="btn">Doctor Login</a>
+            </div>
+
+            <div class="card">
+                <h3>Patient</h3>
+                <p class="description">
+                    Book appointments and view prescriptions easily.
+                </p>
+                <a href="{{ url_for('login_patient') }}" class="btn">Patient Login</a>
+            </div>
+
+            <div class="card">
+                <h3>Pharmacy</h3>
+                <p class="description">
+                    Manage medicine inventory and prescriptions.
+                </p>
+                <a href="{{ url_for('login_pharmacy') }}" class="btn">Pharmacy Login</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+    <section class="section">
+        <h2 class="section-title">Why Choose This System?</h2>
+        <p class="section-subtitle">
+            Designed for efficiency, transparency, and patient safety.
+        </p>
+
+        <div class="grid">
+            <div class="card feature">
+                <h3>Unified Records</h3>
+                <p class="description">
+                    All medical records are stored securely and accessible across departments.
+                </p>
+            </div>
+
+            <div class="card feature">
+                <h3>Role-Based Access</h3>
+                <p class="description">
+                    Each user sees only what they need — improving security and clarity.
+                </p>
+            </div>
+
+            <div class="card feature">
+                <h3>Scalable Architecture</h3>
+                <p class="description">
+                    Built using Flask & SQLAlchemy for future growth.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= HOW IT WORKS ================= -->
+    <section class="section alt">
+        <h2 class="section-title">How It Works</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>Admin</h4>
+                <p>Creates and manages doctors, patients, and pharmacies.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Doctor</h4>
+                <p>Prescribes medicines and tracks patient conditions.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Patient</h4>
+                <p>Selects doctors, views prescriptions, and updates disease info.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Pharmacy</h4>
+                <p>Processes prescriptions and manages stock.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <p>© 2026 Hospital Management System • Built with Flask</p>
+    </footer>
+
+</main>
+
+{% endblock %}

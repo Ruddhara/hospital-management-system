@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Conversation with Dr. {{ doctor.name }}</h2>
+
+<div style="border:1px solid #ccc; height:350px; overflow-y:scroll; padding:10px;">
+
+    {% for msg in messages %}
+        <p>
+            {% if msg.sender == "patient" %}
+                <strong>You:</strong>
+            {% elif msg.sender == "doctor" %}
+                <strong>Doctor:</strong>
+            {% elif msg.sender == "ai" %}
+                <strong style="color:green;">AI Assistant:</strong>
+            {% endif %}
+            {{ msg.message }}
+        </p>
+    {% endfor %}
+
+</div>
+
+<form method="POST">
+    <input type="text" name="message" placeholder="Type message..." required style="width:300px;">
+    <button type="submit">Send</button>
+</form>
+
+<br>
+<a href="{{ url_for('patient_dashboard') }}">Back</a>
+
+{% endblock %}

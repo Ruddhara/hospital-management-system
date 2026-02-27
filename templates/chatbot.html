@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>AI Medical Chatbot</title>
+</head>
+<body>
+    <h2>Medical AI Chatbot</h2>
+
+    <form method="POST">
+        <input type="text" name="message" placeholder="Ask your health question..." required style="width:300px;">
+        <button type="submit">Send</button>
+    </form>
+
+    {% if response %}
+        <h3>AI Response:</h3>
+        <p>{{ response }}</p>
+    {% endif %}
+
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>

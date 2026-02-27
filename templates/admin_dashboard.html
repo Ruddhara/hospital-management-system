@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="dashboard-title">Admin Dashboard</h2>
+
+<!-- ================= SUMMARY CARDS ================= -->
+
+<div class="dashboard-cards">
+
+    <div class="dashboard-card">
+        <h4>👨‍⚕️ Doctors</h4>
+        <div class="count">{{ total_doctors }}</div>
+    </div>
+
+    <div class="dashboard-card">
+        <h4>🧑‍🤝‍🧑 Patients</h4>
+        <div class="count">{{ total_patients }}</div>
+    </div>
+
+    <div class="dashboard-card">
+        <h4>💊 Pharmacies</h4>
+        <div class="count">{{ total_pharmacies }}</div>
+    </div>
+
+    <div class="dashboard-card">
+        <h4>📄 Prescriptions</h4>
+        <div class="count">{{ total_prescriptions }}</div>
+    </div>
+
+</div>
+
+<!-- ================= DOCTOR MANAGEMENT ================= -->
+
+<div class="section-header">
+    <h3>👨‍⚕️ Doctor Management</h3>
+    <a href="{{ url_for('add_doctor') }}" class="add-btn">➕ Add Doctor</a>
+</div>
+
+<div class="table-wrapper">
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Specialization</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+
+{% for doctor in doctors %}
+<tr>
+    <td>{{ doctor.name }}</td>
+    <td>{{ doctor.username }}</td>
+    <td>{{ doctor.specialization }}</td>
+
+    <td>
+        {% if doctor.status == 'Active' %}
+            <span class="status-active">Active</span>
+        {% else %}
+            <span class="status-inactive">Inactive</span>
+        {% endif %}
+    </td>
+
+    
+</tr>
+{% else %}
+<tr>
+    <td colspan="5" class="empty-text">No doctors found</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+<!-- ================= PRESCRIPTIONS ================= -->
+
+<div class="section-header">
+    <h3>📄 Prescriptions</h3>
+</div>
+
+<div class="table-wrapper">
+<table>
+<tr>
+    <th>Doctor</th>
+    <th>Patient</th>
+    <th>Medicine</th>
+    <th>Dosage</th>
+    <th>Notes</th>
+</tr>
+
+{% for p in prescriptions %}
+<tr>
+    <td>{{ p.doctor_name }}</td>
+    <td>{{ p.patient_name }}</td>
+    <td>{{ p.medicine }}</td>
+    <td>{{ p.dosage }}</td>
+    <td>{{ p.notes }}</td>
+</tr>
+{% else %}
+<tr>
+    <td colspan="5" class="empty-text">No prescriptions found</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+
+<!-- ================= PATIENTS ================= -->
+
+<div class="section-header">
+    <h3>🧑‍🤝‍🧑 Patients (View Only)</h3>
+</div>
+
+<div class="table-wrapper">
+<table>
+<tr>
+    <th>Username</th>
+    <th>Disease</th>
+</tr>
+
+{% for patient in patients %}
+<tr>
+    <td>{{ patient.username }}</td>
+    <td>{{ patient.disease or "Not updated" }}</td>
+</tr>
+{% else %}
+<tr>
+    <td colspan="2" class="empty-text">No patients found</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+<!-- ================= PHARMACIES ================= -->
+
+<div class="section-header">
+    <h3>💊 Pharmacies</h3>
+</div>
+
+<div class="table-wrapper">
+<table>
+<tr>
+    <th>Username</th>
+</tr>
+
+{% for pharmacy in pharmacies %}
+<tr>
+    <td>{{ pharmacy.username }}</td>
+</tr>
+{% else %}
+<tr>
+    <td class="empty-text">No pharmacies found</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+{% endblock %}
+
+
